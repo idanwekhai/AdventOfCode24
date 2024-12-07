@@ -15,7 +15,7 @@ def express_eqa(nums, ops):
               expression = f'({expression} {op} {num})'
     return expression
 
-def part_1(ops = ['+', '*']):
+def solve(ops = ['+', '*']):
     matched = []
     for k, v in equations:
         length = len(v)-1
@@ -27,17 +27,5 @@ def part_1(ops = ['+', '*']):
                 break
     return sum(matched)
 
-def part_2(ops = ['+', '*', '||']):
-    matched = []
-    for k, v in equations:
-        length = len(v)-1
-        stragtegies = set(product(ops, repeat=length))
-        for strategy in stragtegies:
-            total = eval(express_eqa(v, strategy))
-            if total == k:
-                matched.append(k)
-                break
-    return sum(matched)
-
-print(part_1())
-print(part_2())
+print("Part 1:", solve(ops=['+', '*']))
+print("Part 2:", solve(ops=['+', '*', '||']))

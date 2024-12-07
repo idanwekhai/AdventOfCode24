@@ -9,7 +9,7 @@ for i in text:
 def express_eqa(nums, ops):
     expression = str(nums[0])
     for op, num in zip(ops, nums[1:]):
-         if op == 'con':
+         if op == '||':
               expression = f'{eval(expression)}' + f'{num}'
          else:
               expression = f'({expression} {op} {num})'
@@ -27,10 +27,9 @@ def part_1(ops = ['+', '*']):
                 break
     return sum(matched)
 
-def part_2(ops = ['+', '*', 'con']):
+def part_2(ops = ['+', '*', '||']):
     matched = []
     for k, v in equations:
-        print(k)
         length = len(v)-1
         stragtegies = set(product(ops, repeat=length))
         for strategy in stragtegies:
